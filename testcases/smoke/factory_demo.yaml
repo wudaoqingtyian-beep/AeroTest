@@ -1,0 +1,14 @@
+name: 造数联动演示-项目1服务造数后查询
+setup:
+  - template: user
+    count: 2
+    var: users        # 项目1 造的 2 行用户数据存入变量池
+request:
+  method: GET
+  path: /json
+assertions:
+  - type: status_eq
+    expected: 200
+  - type: json_contains
+    path: $.slideshow
+    expected: "title"

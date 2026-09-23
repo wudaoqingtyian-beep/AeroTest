@@ -1,0 +1,14 @@
+name: 冒烟-回显POST
+request:
+  method: POST
+  path: /post
+  json:
+    keyword: "hello_${uid}"
+assertions:
+  - type: status_eq
+    expected: 200
+  - type: json_eq
+    path: $.json.keyword
+    expected: "hello_42"
+params:
+  - uid: 42

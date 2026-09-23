@@ -1,0 +1,7 @@
+requests>=2.31
+PyYAML>=6.0
+pytest>=8.0
+pytest-xdist
+allure-pytest
+pymysql
+jsonpath-ng

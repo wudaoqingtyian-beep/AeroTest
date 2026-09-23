@@ -1,0 +1,32 @@
+stages: [test, gate]
+
+variables:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+run_self_tests:
+  stage: test
+  image: python:3.12
+  script:
+    - pip install -r requirements.txt
+    - python -m pytest tests -v --junitxml=reports/junit-self.xml
+  artifacts:
+    when: always
+    paths: [reports/]
+
+run_api_suite:
+  stage: test
+  image: python:3.12
+  script:
+    - pip install -r requirements.txt
+    - python -m pytest -m suite -v --junitxml=reports/junit-suite.xml
+  artifacts:
+    when: always
+    paths: [reports/]
+  allow_failure: false
+
+quality_gate:
+  stage: gate
+  image: python:3.12
+  script:
+    - python scripts/quality_gate.py reports/junit-suite.xml --min-rate 1.0
+  dependencies: [run_api_suite]

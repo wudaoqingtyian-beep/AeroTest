@@ -1,0 +1,9 @@
+base_url: "https://httpbin.org"   # 练手被测系统；换成真实系统时改这里
+timeout: 10
+retry: 1
+headers:
+  Content-Type: "application/json"
+
+data_factory:
+  base_url: "http://127.0.0.1:8000"  # 项目1 造数服务（M5）
+  fallback_dir: "testcases/fallback_data"

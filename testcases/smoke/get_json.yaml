@@ -1,0 +1,10 @@
+name: 冒烟-查询JSON
+request:
+  method: GET
+  path: /json
+assertions:
+  - type: status_eq
+    expected: 200
+  - type: json_contains
+    path: $.slideshow
+    expected: "title"

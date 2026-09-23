@@ -1,0 +1,20 @@
+# 多环境配置模板（真实配置不入库，见 .gitignore）
+# 复制为 config/envs/test.yaml 后填写
+
+test:
+  base_url: "https://httpbin.org"    # 被测系统地址（可先用 httpbin 练手）
+  timeout: 10
+  retry: 2
+  headers:
+    Content-Type: "application/json"
+
+data_factory:
+  base_url: "http://127.0.0.1:8000"  # 项目1 造数服务地址（M5 接入）
+  fallback_dir: "testcases/fallback_data"
+
+db:
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: ""                       # 真实密码只写本地，不入库
+  database: "test"

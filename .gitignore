@@ -1,0 +1,14 @@
+config/config.yaml
+config/envs/*.local.yaml
+__pycache__/
+*.pyc
+.pytest_cache/
+allure-results/
+reports/
+.venv/
+
+# 本地学习/管理文档，不入仓库
+docs/
+PRD.md
+白皮书.md
+开发流程.md
